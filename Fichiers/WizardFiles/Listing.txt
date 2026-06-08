@@ -1,0 +1,43 @@
+<template>
+  <div class="min-[800px]:flex w-full text-black">
+    <Sidebarre/>
+
+     <div class="min-h-[100vh] w-full  overflow-x-auto bg-[#DFDFDF]">
+      <NavBarre/>
+      <ListeTop/>
+
+      <div class="p-[5px]">
+      <FilterListTop/>
+      </div>
+      
+      <div class="p-[5px]" v-show="tassililisting.show">
+        <FilterList/>
+      </div>
+
+      <div>
+        <ListRecord/>
+      </div>
+
+     </div>
+
+  </div>
+</template>
+
+<script setup>
+import Sidebarre from '@/vendor/TassiliLibs/Sidebarre.vue';
+import NavBarre from '@/vendor/TassiliLibs/NavBarre.vue';
+import {listingService} from '@/vendor/TassiliLibs/Service/listingService'
+import ListeTop from '@/vendor/TassiliLibs/Listing/ListeTop.vue';
+import FilterListTop from '@/vendor/TassiliLibs/Listing/FilterListTop.vue';
+import FilterList from '@/vendor/TassiliLibs/Listing/FilterList.vue';
+import { TassiliListing } from '@/vendor/TassiliLibs/stores/tassiliListing';
+import ListRecord from './ListRecord.vue';
+import { Permission } from '@/vendor/TassiliLibs/stores/permission';
+
+const permission = Permission()
+const tassililisting = TassiliListing();
+const { setSettings } = listingService()
+
+setSettings()
+
+</script>

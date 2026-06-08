@@ -1,0 +1,39 @@
+<template>
+  <div class="min-[800px]:flex w-full text-black">
+    <Sidebarre/>
+
+     <div class="min-h-[100vh] w-full  overflow-x-auto bg-[#DFDFDF]">
+        <NavBarre/> 
+        <TopPage/>
+      
+        <div v-if="page.props.record">
+          <FormUpdate :classForm="page.props.pageSettings.className"
+           :action="page.props.pageSettings.action" :record="page.props.record" />
+        </div>
+
+        <ModalForm />
+        
+         <Collection :collection="'montres'"   />
+     </div>
+
+  </div>
+</template>
+
+<script setup>
+import Sidebarre from '@/vendor/TassiliLibs/Sidebarre.vue';
+import NavBarre from '@/vendor/TassiliLibs/NavBarre.vue';
+import { formService } from '@/vendor/TassiliLibs/Service/formService';
+import TopPage from '@/vendor/TassiliLibs/Updator/TopPage.vue';
+import FormUpdate from '@/vendor/TassiliLibs/Forms/FormUpdate.vue';
+import ModalForm from '@/vendor/TassiliLibs/Forms/ModalForm.vue';
+import { usePage } from '@inertiajs/vue3';
+import Collection from '@/vendor/TassiliLibs/Collections/Collection.vue';
+import { Permission } from '@/vendor/TassiliLibs/stores/permission';
+
+const permission = Permission()
+const {setForm} = formService()
+const page = usePage()
+
+setForm()
+
+</script>

@@ -1,0 +1,30 @@
+{
+    "name": "tassili/admin",
+    "description": "package laravel inertia vue admin",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tassili\\Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel" : {
+            "providers": [
+               "Tassili\\Admin\\TassiliServiceProvider"
+            ] 
+        }
+    },
+    "authors": [
+        {
+            "name": "yaziddouassi",
+            "email": "rabahdouassi@yahoo.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.2"
+    }
+}
+
