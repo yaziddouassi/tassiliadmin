@@ -23,6 +23,9 @@ class DashboardController extends Controller
            'user' => \Illuminate\Support\Facades\Auth::user(),
            'routes' =>  \Tassili\Admin\Models\TassiliCrud::where('active',true)->get(),
            'company' => config('tassili.company'),
+           'permissions' => auth()->user()
+                    ->getAllPermissions()
+                    ->pluck('name'),
         ];
     }
 
