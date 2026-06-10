@@ -164,7 +164,7 @@ class ListingController extends Controller
             'paginationPerPageList'  => [10, 20, 30, 40, 50],
             'orderByFieldList'       => ['id'],
             'orderDirectionList'     => ['asc', 'desc'],
-            'urlDelete'              => '/{$panel}/{$c}/listings/delete_by_id',
+            'urlDelete'              => '/{$panel}/{$c}/delete_by_id',
             'showDelete'             => true,
             'showEdit'               => true,
             'permissionsToDeleteById'=> [],
@@ -188,7 +188,7 @@ class ListingController extends Controller
         }
     }
 
-    #[Post('{$panel}/{$c}/listings/delete_by_id', middleware: ['tassili.auth'])]
+    #[Post('{$panel}/{$c}/delete_by_id', middleware: ['tassili.auth'])]
     public function deleteById(Request \$request)
     {
         \$request->model::destroy(\$request->id);
