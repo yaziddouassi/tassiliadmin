@@ -7,7 +7,7 @@
        permission.can(page.props.tassiliSettings.tassiliFormList[page.props.tassiliSettings.collections[props.collection]['urlCreation']]['info']['permissions'])">
          <button class="bg-blue-800 min-w-[120px] text-white p-[9px] rounded-[5px]"
          @click="tassiliInput.openFormCreate(page.props.tassiliSettings.collections[props.collection]['urlCreation'])">
-           + {{ props.collection }}</button>
+           + {{ page.props.tassiliSettings.collections[props.collection]['label'] }}</button>
        </div>
 
        <div class="min-[900px]:grid grid-cols-2 gap-4 pt-[10px]">
