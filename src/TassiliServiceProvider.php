@@ -30,6 +30,7 @@ class TassiliServiceProvider extends ServiceProvider
             \Tassili\Admin\Commands\TassiliCreator::class,
             \Tassili\Admin\Commands\WizardCommand::class,
             \Tassili\Admin\Commands\CreateCollection::class,
+            \Tassili\Admin\Commands\CreateForm::class,
         ]);
     }
 }
