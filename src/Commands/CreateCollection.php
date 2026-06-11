@@ -174,7 +174,7 @@ class {{ class }} extends Controller
             'action'                   => 'deleteById',
             'showDelete'               => True,
             'records'                  => function() { 
-             return {{ modelFull }}::paginate(15, ['*'], '{{ paginationKey }}') ; },
+             return {{ modelFull }}::paginate(10, ['*'], '{{ paginationKey }}') ; },
         ]);
 
         $this->tassili->collectionFormInsert([
