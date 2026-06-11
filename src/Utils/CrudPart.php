@@ -191,6 +191,7 @@ class ListingController extends Controller
     #[Post('{$panel}/{$c}/delete_by_id', middleware: ['tassili.auth'])]
     public function deleteById(Request \$request)
     {
+        \$this->utility->checkPermissionsDeleteById(\$request);
         \$request->model::destroy(\$request->id);
     }
 
@@ -304,6 +305,7 @@ class {$a}CreatorForm
 
     public function create(Request \$request)
     {
+        \$this->tassili->checkPermissions(\$request);
         \$request->validate(['name' => ['required']]);
         \$this->tassili->record = new \$this->model;
         \$this->tassili->createRecord(\$request);
@@ -360,6 +362,7 @@ class {$a}UpdatorForm
 
     public function create(Request \$request)
     {
+        \$this->tassili->checkPermissions(\$request);
         \$request->validate(['name' => ['required']]);
         \$this->tassili->record = \$this->model::find(\$request->id);
 
@@ -457,6 +460,7 @@ class Bulk extends Controller
 
     public function bulk1(Request \$request)
     {
+        \$this->utility->checkPermissions(\$request);
         \$this->model::whereIn('id', \$request->actionIds)->delete();
     }
 }
@@ -511,6 +515,7 @@ class Modal extends Controller
 
     public function modal1(Request \$request)
     {
+        \$this->utility->checkPermissions(\$request);
         \$request->validate(['name' => ['required']]);
         \$this->utility->record = \$this->model::find(\$request->id);
 
