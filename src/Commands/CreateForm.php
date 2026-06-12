@@ -18,7 +18,7 @@ class CreateForm extends Command
        
         // 1. Panel
         $panel = 'admin';
-
+        $modelList = config('tassili.modelList', []);
          // 2. Modèle CRUD parent (namespace)
         if (!empty($modelList)) {
             $crudModel = $this->choice('Model CRUD parent (namespace) ?', $modelList);
