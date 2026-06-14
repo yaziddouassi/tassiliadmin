@@ -24,11 +24,30 @@ npm install pinia
 npm install notyf
 npm install material-icons
 composer require spatie/laravel-route-attributes
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan config:clear
+php artisan migrate
+```
+
+---
+### 2. Update User Model
+In your `App/Models/User.php`, add:
+
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+ {
+   use HasRoles;
+    ...
+ }
 ```
 
 ---
 
-### 2. Configure if you are not using typescript `resources/js/app.js`
+### 3. Configure if you are not using typescript `resources/js/app.js`
 
 ```js
 import '../css/app.css';
@@ -63,7 +82,7 @@ createInertiaApp({
 
 ---
 
-### 2-b. Configure if you are using typescript `resources/js/app.ts` 
+### 3-b. Configure if you are using typescript `resources/js/app.ts` 
 
 ```js
 import '../css/app.css';
@@ -98,7 +117,7 @@ createInertiaApp({
 
 ---
 
-### 3. Storage Configuration (example for `public` disk)
+### 4. Storage Configuration (example for `public` disk)
 
 ```env
 TASSILI_STORAGE_DISK=public
@@ -107,10 +126,10 @@ TASSILI_STORAGE_URL=http://127.0.0.1:8000/storage/
 
 ---
 
-### 4. Install Tassili
+### 5. Install Tassili
 
 ```bash
-composer require tassili/crud
+composer require tassili/admin
 php artisan migrate
 php artisan tassili:install
 php artisan vendor:publish --tag=tassili-config
@@ -119,7 +138,7 @@ php artisan storage:link
 
 ---
 
-### 5. Register Tassili Middleware
+### 6. Register Tassili Middleware
 
 In your `bootstrap/app.php`, add:
 
@@ -131,7 +150,7 @@ $middleware->alias([
 
 ---
 
-### 6. Update AppServiceProvider
+### 7. Update AppServiceProvider
 
 In your `app/Providers/AppServiceProvider.php`, add:
 
@@ -153,7 +172,7 @@ use Spatie\RouteAttributes\RouteFileRegistrar;
 ```
 ---
 
-### 7. Create Admin User
+### 8. Create Admin User
 
 ```bash
 php artisan make:tassili-user
@@ -182,4 +201,4 @@ This project is licensed under a commercial license via [Gumroad](https://yazid4
 
 ---
 
-**Crafted with ❤️ by [LH DIGITAL]**
+**Crafted with ❤️ by Rabahdouassi**
