@@ -149,7 +149,7 @@ use App\Http\Controllers\Controller;
 use Tassili\Admin\Fields\TextInput;
 use Spatie\RouteAttributes\Attributes\Post;
 
-class {{ class }} extends Controller
+class {{ class }}
 {
     public TassiliForm $tassili;
     public $model = '{{ modelFull }}';
